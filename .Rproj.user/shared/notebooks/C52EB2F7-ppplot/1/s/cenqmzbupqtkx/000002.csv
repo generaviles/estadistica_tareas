@@ -1,0 +1,5 @@
+"0","```r
+dataset <- read.csv(\"D:/Dropbox/MsC UABC/2o Semestre/Clases/Estadistica/tareas/datasets/enrollmentNewMexico.csv\")
+#constructing linear model
+lmVar <- lm(ROLL~UNEM, dataset)
+```"

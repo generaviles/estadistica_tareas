@@ -1,0 +1,2 @@
+"0","probDist <- pnorm(standResid)"
+"0","plot(ppoints(length(standResid)), sort(probDist), main = ""PP Plot"", xlab = ""Observed Probability"", ylab = ""Expected Probability"")"

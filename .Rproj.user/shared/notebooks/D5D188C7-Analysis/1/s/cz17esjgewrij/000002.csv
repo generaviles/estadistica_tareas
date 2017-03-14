@@ -1,0 +1,4 @@
+"0","```r
+library(readr)
+dataset <- read_csv(\"D:/Dropbox/MsC UABC/TESIS/Evarista/micronucleos/stats pack/2 dataset modifications/Datos Completos con LatLong.csv\")
+```"

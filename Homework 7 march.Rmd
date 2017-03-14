@@ -1,0 +1,20 @@
+---
+title: "Homework --Different Topics--"
+output: html_notebook
+---
+
+##Univariate Analysis
+
+  - Simplest form of analyzing data.
+  - Focuses in analyzing only one variable at a time.
+  - Descrpictive statistics of univariate analysis:
+    - central tendency (mean, mode, median)
+    - dispersion (range, variance, maximum, minimum, quartiles -IQR-)
+    - Standard deviation
+  - Visualization:
+    - Frequency distribution tables.
+    - Bar charts
+    - Histograms
+    - Frequency polygons
+    - Pie charts
+  

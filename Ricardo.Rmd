@@ -1,0 +1,51 @@
+---
+title: "Datos de Ricardo"
+output:
+  html_notebook: default
+  pdf_document: default
+---
+
+##Raw data
+
+Loading a `.txt` with spaces and no header provided by Ricardo and shwoing the first 6 entries.
+```{r}
+library(readr)
+ric <- read.table("D:/Dropbox/MsC UABC/2o Semestre/Clases/Estadistica/tareas/datasets/ricardocomp.txt", header = FALSE, sep = " ")
+head(ric)
+```
+
+
+There are some things that need to be done with this raw dataset:
+
+  - Add Headers to V2, V4 and V9.
+  - Eliminate the others, once the first step is done, the rest is not needed.
+
+The 6 first entries of the tidy dataset looks like this:
+```{r}
+colnames(ric) <- c("V1","V2", "Imagen","V4","V5","Umbral","V7","V8","V9","Cantidad de Ceros")
+ric <- ric[,-c(1,2,4,5,7:9), drop = FALSE]
+head(ric)
+```
+
+For Ricardo and Ernesto it is important to analyze the graph generated with `Umbral` and `Cantidad de Ceros`:
+```{r}
+plot(ric)
+```
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+library(ggplot2)
+ggplot(ric, aes(x = ric$Umbral, y = ric$`Cantidad de Ceros`)) +
+  geom_path(color = ric$Imagen, lineend = "round", show.legend = TRUE) +
+  labs(title = "Experimento 3", x = "Valores de Umbral", y = "Cantidad de Información")
+```
+
+
+```{r, message=FALSE, warning=FALSE}
+library(readr)
+ric2 <- read_csv("D:/Dropbox/MsC UABC/2o Semestre/Clases/Estadistica/tareas/datasets/ricardo2.csv", 
+    col_names = FALSE)
+View(ric2)
+
+
+```
+Es por esto que pruebo las citas [@sakia1992box], y luego otra cita, esperando que funcionen asi nadamas [@box1964analysis].

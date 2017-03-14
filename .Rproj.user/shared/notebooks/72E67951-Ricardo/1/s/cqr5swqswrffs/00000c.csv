@@ -1,0 +1,4 @@
+"0","library(readr)"
+"0","ric <- read.table(""D:/Dropbox/MsC UABC/2o Semestre/Clases/Estadistica/tareas/datasets/ricardocomp.txt"", header = FALSE, sep = "" "")"
+"2","number of items read is not a multiple of the number of columns"
+"0","head(ric)"

@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1489518122540.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BEACDB83",
+    "lastKnownWriteTime" : 5292976843906638626,
+    "last_content_update" : 1489518122540,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "3CBDDEE1",
+        "caption" : "tres",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=tres&cache_key=3CBDDEE1",
+        "displayedObservations" : "7",
+        "environment" : "",
+        "object" : "tres",
+        "preview" : "0",
+        "totalObservations" : "7",
+        "variables" : "5"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

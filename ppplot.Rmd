@@ -1,0 +1,57 @@
+---
+title: "PP-Plots"
+author: "Gener Aviles-R, based on a blog previously published by [John M Quick](http://rtutorialseries.blogspot.in/2009/12/r-tutorial-series-graphic-analysis-of.html?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed:+RTutorialSeries+(R+Tutorial+Series))."
+output: html_notebook
+---
+
+PP-Plots are a graphic representation of the probability calculated and probability observed in a dataset. Mostly used when evaluating  model performance.
+In this excercise a PP-Plot will be used in the process of evaluating a linear model from [enrollment at the University of New Mexico](http://rtutorialseries.blogspot.in/2009/11/r-tutorial-series-simple-linear.html).
+
+###Reading the dataset and creating a model based on enrollment (`ENROLL`) and unemployment (`UNEM`) data.
+```{r Reading table and creating lm}
+dataset <- read.csv("D:/Dropbox/MsC UABC/2o Semestre/Clases/Estadistica/tareas/datasets/enrollmentNewMexico.csv")
+#constructing linear model
+
+lmVar <- lm(ROLL~UNEM, dataset)
+
+```
+
+###Obtaining values for the **lm** model.
+
+```{r}
+unstandPred <- predict(lmVar)
+unstandResid <- resid(lmVar)
+
+```
+
+The values obtained with the previous lines of code are not standardized, which means that their range is way to different between these vairables, a **standardization** process will solve this problem and allow us to run analysis smoothly on them.
+
+The following formula can be used to standardize a set of values:
+$$Z = \frac{x-\mu}{\sigma}$$
+Where $x$ is the value being standardized, $\mu$ is the mean of the variable to which the value belongs to and $\sigma$ is the standard deviation of the variable to which the value belongs to.
+
+```{r, message=FALSE, warning=FALSE}
+standPred <- (unstandPred - mean(unstandPred)) / sd(unstandPred)
+standResid <- (unstandResid - mean(unstandResid)) / sd(unstandResid)
+```
+###Calculating the probability distribution for residuals
+
+```{r}
+probDist <- pnorm(standResid)
+plot(ppoints(length(standResid)), sort(probDist), main = "PP Plot", xlab = "Observed Probability", ylab = "Expected Probability")
+abline(0,1)
+```
+
+###This all can be done with the `ppplot.das` from the `CircStats` package:
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+library(StatDA)
+library(CircStats)
+#ppplot.das(dataset$ROLL, pdist = pnorm, xlab = "Enrollment", ylab = "Probability Calculated", line = TRUE)
+
+ppplot.das(standResid, pdist = pnorm, xlab = "Expected Probabilty", ylab = "Observed Probability", line = TRUE)
+```
+
+```{r}
+pop<-c(20,23,24,24,24,25,29,31,31,33,34,36,36,37,39,39,40,40,41,45)
+```

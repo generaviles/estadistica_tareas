@@ -1,0 +1,68 @@
+Stratified Sampling
+========================================================
+author: Dolores Ojeda, Gener Avilés R
+date: `r Sys.Date()`
+autosize: true
+
+
+
+What is Stratified Sampling?
+========================================================
+
+Population is partitioned in non-overlaping groups, called **strata** and a **sample** is collected from each stratum following a determined design.
+<br \><br \>
+<center><img src="http://image.mathcaptain.com/cms/images/113/stratified-sampling.png" height="400px" /></center>
+
+
+Why use Stratified Sampling?
+========================================================
+<br \>
+- May produce smaller error when estimating than simple random sample. Specially when measurements within strata have realitve small variation.
+- Cost by observation reduced.
+- There may be a need to have a subgroup (stratum) with similar estimates of those of the population.
+
+
+
+Example
+==========================================================
+The Titanic Database:
+```{r, echo=FALSE}
+library(readr)
+titanic <- read_csv("D:/Dropbox/MsC UABC/2o Semestre/Clases/Estadistica/tareas/titanictest.csv")
+summary(titanic)
+```
+
+Variable Codes
+=====================================================
+<br \>
+- `Pclass`: 1 = Upper, 2 = Middle, 3 = Lower.
+- `SibSp`: Number of Siblings/Spouses aboard.
+- `Parch`: Number of Parents/Children Aboard.
+- `Embarked`: C = Cherbourg, Q = Queenstown, S = Southampton.
+
+Calculating Probabilities to select people who embarked in Queenstown
+================================================================
+<br \>
+$P(A) = \frac{\text{Numero de elementos de A}}{n}$
+
+There are 1310 entries, and 123 of them embarked in **Q**ueenstown, nevertheless the risk of dying was equally present for them as for the passengers from **S**outhampton or **C**herbourg.<br \>
+If a uniform proability is calculated the numbers are:<br \>
+- $P(Q) = \frac{123}{1310} =$ `r 123/1310`
+- $P(C) = \frac{270}{1310} =$ `r 270/1310`
+- $P(S)\frac{914}{1310} =$ `r 914/1310`
+
+This approximation will hinder the process of data mining and, eventually, the generation of a machine learning model for survival prediction.
+
+Fixing the Problem
+==========================================================
+By using **stratified sampling** we can raise the probability for the group that boarded in Queenstown and survived to be selected, therefore, taken in consideration for the generation of a survival prediction model. For this we will use **conditional probability**:
+
+$P(Survived|EmbarkedQ)= \frac{P(Survived\cap EmbarkedQ)}{P(EmbarkedQ)} = \frac{44}{123}=$ `r 44/123`
+```{r}
+library(dplyr)
+Q<-filter(titanic, embarked == "Q" & survived == 1)
+count(Q)
+```
+
+======
+<center><img src="http://image.mathcaptain.com/cms/images/113/stratified-sampling.png" height="700px" /></center>

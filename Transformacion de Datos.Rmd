@@ -1,0 +1,361 @@
+---
+title: "Transformación de Datos"
+author: "Gener Aviles-R"
+date: "March 14, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Considering the figure, please answer the following questions:
+
+<center>![](D:/Dropbox/MsC UABC/2o Semestre/Clases/Estadistica/tareas/img/regresion.png)</center>
+
+<br \>
+
+###Which of the following formulas define $y$ as a linear function of $x$ ($m$ and $b$ are constants)?
+
+###A straight line passes through the points $(3,5)$ and $(4,7)$. use these points to find a rise and corresponding run, the slope of the line, and the $y$ intercept $b$.
+
+<br \>
+
+For convenience in distinguishing the dependent variable (usually called $y$) in the following problems, we shall use the capital letter $B$, $C$, $D$, $E$ and $F$ instead of $y$.
+
+In each of these problems a precise relation exists between two variables. Find the relation. Trnasform the $x$ variable in each problem to get the points on a straight line.
+
+###Problema 3:
+  
+| B | 3 | 6 | 11 | 18 | 27 | 38 | 51 |
+|---|---|---|----|----|----|----|----|
+| x | 1 | 2 | 3  | 4  | 5  | 6  | 7  |
+
+####Relación inicial de variables:
+
+**Creando los objetos necesarios en R y visualización inicial:**
+```{r}
+B <- c(3,6,11,18,27,38,51)
+x <- c(1,2,3,4,5,6,7)
+
+plot(x, B,
+     main = "Relación de Variables sin Modificaciones Problema 3",
+     type = "b",
+     col = "red")
+```
+
+####P3 Exploración de Transformaciones de Datos más Comunes
+
+```{r, echo=FALSE}
+
+tres <- data.frame(B,x) #Creating de data.frame
+
+#plot(x,B, main = "Datos sin Manipulación")
+#lines(x,B, type = "l")
+
+##Raiz cuadrada
+
+B_sqrt <- sqrt(B)
+
+#plot(x, B_sqrt, main = "Transformación con Raíz Cuadrada")
+#lines(x,B_sqrt, type = "l")
+
+##Poder al cuadrado
+Bpower2 <- B^2
+#plot(x, Bpower2, main = "Transformación con Poder a la 2")
+#lines(x,Bpower2, type = "l")
+
+##Logaritmo
+B_log <- log(B)
+#plot(x, Bpower2, main = "Transformación por Logaritmos Naturales")
+#lines(x,Bpower2, type = "l")
+
+##Añadiendo todos los valores a una sola tabla `tree`
+tres <- data.frame(x, B, B_log, B_sqrt, Bpower2)
+
+##Una gráfica inicial
+plot(tres, col = "red")
+
+```
+
+####P3 Respuesta óptima
+
+Para éste problema, al reducción por **raíz cuadrada** produce el mejor resultado. Entonces desarrollamos una gráfica solo de ésta transformación.
+
+```{r}
+plot(x, B_sqrt,
+     type = "b",
+     lwd = 3,
+     col = "red",
+     main = "Relación de Variables con Transformación por Raíz Cuadrada de B",
+     xlab = "Valores X",
+     ylab = "B^2")
+```
+
+###Problema 4
+
+| C | 5 | 11 | 21 | 35 | 53 | 75 | 101 |
+|---|---|----|----|----|----|----|-----|
+| x | 1 | 2  | 3  | 4  | 5  | 6  | 7   |
+
+###P4 Creando los objetos necesarios en R y visualización inicial:
+```{r}
+C <- c(5,11,21,35,53,75,101)
+x <- c(1,2,3,4,5,6,7)
+
+cuatro <- data.frame(C,x)
+
+plot(x, C,
+     main = "Relación de Variables sin Modificaciones Problema 4",
+     type = "b",
+     col = "blue")
+```
+
+####P4 Exploración de Transformaciones de Datos más Comunes
+
+```{r}
+
+##Raíz Cuadrada
+C_sqrt <- sqrt(C)
+
+#plot(x, B_sqrt, main = "Transformación con Raíz Cuadrada")
+#lines(x,B_sqrt, type = "l")
+
+##Potencia al cuadrado
+Cpotencia2 <- C^2
+#plot(x, Bpower2, main = "Transformación con Poder a la 2")
+#lines(x,Bpower2, type = "l")
+
+##Logaritmo
+C_log <- log(C)
+#plot(x, Bpower2, main = "Transformación por Logaritmos Naturales")
+#lines(x,Bpower2, type = "l")
+
+##Añadiendo todos los valores a una sola tabla
+cuatro <- data.frame(x, C, C_log, C_sqrt, Cpotencia2)
+
+##Una gráfica inicial
+plot(cuatro,
+     col = "chartreuse4")
+```
+
+####P4 Respuesta óptima
+
+Para éste problema, al reducción por **raíz cuadrada** produce el mejor resultado. Entonces desarrollamos una gráfica solo de ésta transformación.
+
+```{r}
+plot(x, C_sqrt,
+     type = "b",
+     lwd = 3,
+     col = "green",
+     main = "Relación de Variables con Transformación por Raíz Cuadrada de C",
+     xlab = "Valores X",
+     ylab = "Sqrt C")
+```
+
+###Problema 5
+
+| D | 1024 | 512 | 256 | 128 | 64 | 32 |
+|---|------|-----|-----|-----|----|----|
+| x | 1    | 2   | 3   | 4   | 5  | 6  |
+
+####Creando los objetos necesarios en R y visualización inicial:
+```{r}
+D <- c(1024, 512, 256, 128, 64, 32)
+x <- c(1,2,3,4,5,6)
+
+cinco <- data.frame(D,x)
+
+plot(x, D,
+     type = "b",
+     lwd = 3,
+     col = "chocolate2",
+     main = "Relación de Variables sin Modificaciones Problema 5")
+```
+
+####P5 Exploración de Transformaciones de Datos más Comunes
+
+```{r}
+##Raíz Cuadrada
+D_sqrt <- sqrt(D)
+
+#plot(x, B_sqrt, main = "Transformación con Raíz Cuadrada")
+#lines(x,B_sqrt, type = "l")
+
+##Potencia al cuadrado
+Dpotencia2 <- D^2
+#plot(x, Bpower2, main = "Transformación con Poder a la 2")
+#lines(x,Bpower2, type = "l")
+
+##Logaritmo
+D_log <- log(D)
+#plot(x, Bpower2, main = "Transformación por Logaritmos Naturales")
+#lines(x,Bpower2, type = "l")
+
+##Añadiendo todos los valores a una sola tabla
+cinco <- data.frame(x, D, D_log, D_sqrt, Dpotencia2)
+
+##Una gráfica inicial
+plot(cinco,
+     col = "chocolate2")
+```
+
+####P5 Respuesta óptima
+
+Para éste problema, al reducción por **logaritmo natural** produce el mejor resultado. Entonces desarrollamos una gráfica solo de ésta transformación.
+
+```{r}
+plot(x, D_log,
+     type = "b",
+     lwd = 3,
+     col = "chocolate2",
+     main = "Relación de Variables con Transformación por Logaritmo Natural de D",
+     xlab = "Valores X",
+     ylab = "Log C")
+```
+
+###Problema 6
+
+| E | 120 | 60 | 40 | 30 | 24 |
+|---|-----|----|----|----|----|
+| x | 1   | 2  | 3  | 4  | 5  |
+
+###P6 Creando los objetos necesarios en R y visualización inicial:
+```{r}
+E <- c(120,60,40,30,24)
+x <- c(1,2,3,4,5)
+
+cuatro <- data.frame(E,x)
+
+plot(x, E,
+     main = "Relación de Variables sin Modificaciones Problema 5",
+     lwd = 3,
+     type = "b",
+     col = "blueviolet")
+```
+
+####P5 Exploración de Transformaciones de Datos más Comunes
+
+```{r}
+
+##Raíz Cuadrada
+E_sqrt <- sqrt(E)
+
+#plot(x, B_sqrt, main = "Transformación con Raíz Cuadrada")
+#lines(x,B_sqrt, type = "l")
+
+##Potencia al cuadrado
+Epotencia2 <- E^2
+#plot(x, Bpower2, main = "Transformación con Poder a la 2")
+#lines(x,Bpower2, type = "l")
+
+##Logaritmo
+E_log <- log(E)
+#plot(x, Bpower2, main = "Transformación por Logaritmos Naturales")
+#lines(x,Bpower2, type = "l")
+
+##1/x
+
+unoEntreE <- 1/E
+
+##Añadiendo todos los valores a una sola tabla
+seis <- data.frame(x, E, E_log, E_sqrt, Epotencia2, unoEntreE)
+
+##Una gráfica inicial
+plot(seis,
+     col = "blueviolet")
+```
+
+####P6 Respuesta óptima
+
+Para éste problema, al reducción por **$1/E$** produce el mejor resultado. Entonces desarrollamos una gráfica solo de ésta transformación.
+
+```{r}
+plot(x, unoEntreE,
+     type = "b",
+     lwd = 3,
+     col = "blueviolet",
+     main = "Relación de Variables con Transformación por 1/E",
+     xlab = "Valores X",
+     ylab = "1/E")
+```
+
+###Problema 7
+
+Encuentra la pendiente cuando $F$ es graficada contra $x^2$, después da la fórmula para $F$ y $x^2$.
+
+| F | 0.283 | 0.785 | 1.54 | 2.54 |
+|---|-------|-------|------|------|
+| x | 0.3   | 0.5   | 0.7  | 0.9  |
+
+
+###NO JALA P7 Creando los objetos necesarios en R y visualización inicial: NO JALA
+```{r}
+#F <- c(0.283,0.785,1.54,2.54)
+#x_1 <- c(0.3,0.5,0.7,0.9)
+#xsqr <- x_1^2
+
+#cuatro <- data.frame(E,x)
+
+#plot(x, E,
+ #    main = "Relación de Variables sin Modificaciones Problema 5",
+  #   lwd = 3,
+   #  type = "b",
+    # col = "blueviolet")
+```
+
+###Problema 8
+
+$$y = 4\pi x^2$$
+
+```{r}
+eq = function(x){x^2*(pi*4)}
+curve(eq,
+      from=-20, to=20,
+      lwd = 3,
+      main = "Curva de la Ecuación y = 4pi*X^2",
+      xlab="X",
+      ylab="Y")
+```
+
+
+###Problema 9
+
+$$y = 5x^3 - 10$$
+```{r fig.align='center'}
+eq = function(x){((x^3)*5)-10}
+curve(eq,
+      from=-20, to=20,
+      lwd = 3,
+      main = "Curva de la Ecuación y = 5x^3-10",
+      xlab="X",
+      ylab="Y")
+```
+
+
+###Problema 10
+$$y = \frac{3}{x^1/2}$$
+```{r}
+eq = function(x){3/(x^(1/2))}
+curve(eq,
+      from=0, to=20,
+      lwd = 3,
+      main = "Curva de la Ecuación y = 3/(x^1/2)",
+      xlab="X",
+      ylab="Y")
+
+```
+
+
+###Problema 11
+$$y = 5(10^x)$$
+```{r}
+eq = function(x){10^x * 5}
+curve(eq,
+      from=0, to=10,
+      lwd = 3,
+      main = "Curva de la Ecuación y = 5(10^x)",
+      xlab="X",
+      ylab="Y")
+```
+

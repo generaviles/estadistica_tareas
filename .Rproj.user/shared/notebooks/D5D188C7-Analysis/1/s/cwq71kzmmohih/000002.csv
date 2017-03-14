@@ -1,0 +1,4 @@
+"0","```r
+dataset <- dataset[-52:-79,-34]
+dataset <- dataset[,-38:-39]
+```"
