@@ -1,2 +1,0 @@
-"0","standPred <- (unstandPred - mean(unstandPred)) / sd(unstandPred)"
-"0","standResid <- (unstandResid - mean(unstandResid)) / sd(unstandResid)"

@@ -1,7 +1,0 @@
-"0","plot(x, C_sqrt,"
-"0","     type = ""b"","
-"0","     lwd = 3,"
-"0","     col = ""green"","
-"0","     main = ""Relación de Variables con Transformación por Raíz Cuadrada de C"","
-"0","     xlab = ""Valores X"","
-"0","     ylab = ""Sqrt C"")"

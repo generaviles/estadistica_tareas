@@ -1,8 +1,0 @@
-"0","E <- c(120,60,40,30,24)"
-"0","x <- c(1,2,3,4,5)"
-"0","cuatro <- data.frame(E,x)"
-"0","plot(x, E,"
-"0","     main = ""Relación de Variables sin Modificaciones Problema 5"","
-"0","     lwd = 3,"
-"0","     type = ""b"","
-"0","     col = ""blueviolet"")"

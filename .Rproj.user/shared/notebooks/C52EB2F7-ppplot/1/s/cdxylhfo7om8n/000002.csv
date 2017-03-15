@@ -1,5 +1,0 @@
-"0","```r
-unstandPred <- predict(lmVar)
-unstandResid <- resid(lmVar)
-
-```"

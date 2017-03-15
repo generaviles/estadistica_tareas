@@ -1,7 +1,0 @@
-"0","plot(x, D_log,"
-"0","     type = ""b"","
-"0","     lwd = 3,"
-"0","     col = ""chocolate2"","
-"0","     main = ""Relación de Variables con Transformación por Logaritmo Natural de D"","
-"0","     xlab = ""Valores X"","
-"0","     ylab = ""Log C"")"

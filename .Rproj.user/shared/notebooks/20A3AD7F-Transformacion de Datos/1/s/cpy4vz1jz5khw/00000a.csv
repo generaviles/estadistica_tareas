@@ -1,8 +1,0 @@
-"0","D <- c(1024, 512, 256, 128, 64, 32)"
-"0","x <- c(1,2,3,4,5,6)"
-"0","cinco <- data.frame(D,x)"
-"0","plot(x, D,"
-"0","     type = ""b"","
-"0","     lwd = 3,"
-"0","     col = ""chocolate2"","
-"0","     main = ""Relación de Variables sin Modificaciones Problema 5"")"

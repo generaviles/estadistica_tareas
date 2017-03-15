@@ -1,7 +1,0 @@
-"0","plot(x, B_sqrt,"
-"0","     type = ""b"","
-"0","     lwd = 3,"
-"0","     col = ""red"","
-"0","     main = ""Relación de Variables con Transformación por Raíz Cuadrada de B"","
-"0","     xlab = ""Valores X"","
-"0","     ylab = ""B^2"")"

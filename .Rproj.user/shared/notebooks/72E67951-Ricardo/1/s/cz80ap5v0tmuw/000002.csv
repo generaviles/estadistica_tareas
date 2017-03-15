@@ -1,4 +1,0 @@
-"0","library(ggplot2)"
-"0","ggplot(ric, aes(x = ric$Umbral, y = ric$`Cantidad de Ceros`)) +"
-"0","  geom_path(color = ric$Imagen, lineend = ""round"", show.legend = TRUE) +"
-"0","  labs(title = ""Experimento 3"", x = ""Valores de Umbral"", y = ""Cantidad de Información"")"

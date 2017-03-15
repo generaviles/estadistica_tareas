@@ -2,7 +2,9 @@
 title: "Transformación de Datos"
 author: "Gener Aviles-R"
 date: "March 14, 2017"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -11,17 +13,128 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ##Considering the figure, please answer the following questions:
 
-<center>![](D:/Dropbox/MsC UABC/2o Semestre/Clases/Estadistica/tareas/img/regresion.png)</center>
+<center>![](D:/Dropbox/MsC UABC/2o Semestre/Clases/Estadistica/estadistica_tareas/img/regresion.png)</center> <!--OJO, cambiar de acuerdo al folder donde guardes éste archvio para que jale la foto, si no te va a dar un error de pandoc y no va a armar nada de documento, puede ser causa de tristeza y depresión-->
 
 <br \>
 
-###Which of the following formulas define $y$ as a linear function of $x$ ($m$ and $b$ are constants)?
+###1. Which of the following formulas define $y$ as a linear function of $x$ ($m$ and $b$ are constants)?
+<center>![](D:/Dropbox/MsC UABC/2o Semestre/Clases/Estadistica/estadistica_tareas/img/regresion1.png)</center> <!--OJO, cambiar de acuerdo al folder donde guardes éste archvio para que jale la foto, si no te va a dar un error de pandoc y no va a armar nada de documento, puede ser causa de tristeza y depresión-->
 
-###A straight line passes through the points $(3,5)$ and $(4,7)$. use these points to find a rise and corresponding run, the slope of the line, and the $y$ intercept $b$.
+####Graficación de las funciones
+```{r, echo=FALSE, fig.width=3,fig.height= 3, fig.align='center'}
+# a
+eq_a = function(x){3^x + 2}
+curve(eq_a,
+      from=0, to=10,
+      lwd = 3,
+      main = "(A): y = 3^x + 2",
+      xlab="X",
+      ylab="Y")
+```
+
+```{r, echo=FALSE, fig.width=3,fig.height= 3, fig.align='center'}
+# b
+eq_a = function(x){(x/2)-5}
+curve(eq_a,
+      from=0, to=10,
+      lwd = 3,
+      main = "(B): y = 1/2X - 5",
+      xlab="X",
+      ylab="Y")
+```
+
+```{r, echo=FALSE, fig.width=3,fig.height= 3, fig.align='center'}
+# c
+eq_a = function(x){1/x}
+curve(eq_a,
+      from=0, to=10,
+      lwd = 3,
+      main = "(C): y = m/x - b",
+      xlab="X",
+      ylab="Y")
+```
+
+```{r, echo=FALSE, fig.width=3,fig.height= 3, fig.align='center'}
+# c
+eq_a = function(x){x}
+curve(eq_a,
+      from=0, to=10,
+      lwd = 3,
+      main = "(D): y = m + x +b",
+      xlab="X",
+      ylab="Y")
+```
+
+```{r, echo=FALSE, fig.width=3,fig.height= 3, fig.align='center'}
+# E
+eq_a = function(x){(x^3 * 3) +2}
+curve(eq_a,
+      from=-10, to=10,
+      lwd = 3,
+      main = "(E): y = 3x^3 + 2",
+      xlab="X",
+      ylab="Y")
+```
+
+```{r, echo=FALSE, fig.width=3,fig.height= 3, fig.align='center'}
+# F
+eq_a = function(x){(10^x) * pi}
+curve(eq_a,
+      from=0, to=10,
+      lwd = 3,
+      main = "(F): y = pi * 10^x",
+      xlab="X",
+      ylab="Y")
+```
+
+```{r, echo=FALSE, fig.width=3,fig.height= 3, fig.align='center'}
+# G
+eq_a = function(x){x - 2}
+curve(eq_a,
+      from=-10, to=10,
+      lwd = 3,
+      main = "(G): y = (x^2 - 2x)/(sqrt(x))^2",
+      xlab="X",
+      ylab="Y")
+```
+
+####Respuesta
+
+Basados en las graficaciones podemos ver que las ecuaciones lineales son las de los incisos:
+
+  - B
+  - D
+  - G
+
+###2. A straight line passes through the points $(3,5)$ and $(4,7)$. use these points to find a rise and corresponding run, the slope of the line, and the $y$ intercept $b$.
+
+Para resolver éste ejercicio se utilizará la aproximación de mínimos cuadrados, sobre la que se basa la regresión lineal. La función `lm()` en R hace éste cálculo a partir de un arreglo de datos que se le entregan, en éste caso los datos de las dos coordenadas del ejercicio.
+
+```{r}
+###PENDIENTE AGREGAR LA TEORIA Y MATEMATICA DE LOS MINIMOS CUADRADOS
+
+x_lm <- c(3,5)
+y_lm <- c(4,7)
+
+fit <- lm(x_lm ~ y_lm)
+
+```
+
+Mostrando los atributos del objeto `fit`, que es donde se guardó el modelo, vemos lo siguiente:
+
+```{r}
+fit
+```
+
+Por lo tanto:
+
+  - *$y$ intercept $b$* = 0.3333
+  - *Slope of the line* = 0.6667
+  - *Rise and corresponding run* = **??????????**
 
 <br \>
 
-For convenience in distinguishing the dependent variable (usually called $y$) in the following problems, we shall use the capital letter $B$, $C$, $D$, $E$ and $F$ instead of $y$.
+##For convenience in distinguishing the dependent variable (usually called $y$) in the following problems, we shall use the capital letter $B$, $C$, $D$, $E$ and $F$ instead of $y$.
 
 In each of these problems a precise relation exists between two variables. Find the relation. Trnasform the $x$ variable in each problem to get the points on a straight line.
 
@@ -98,7 +211,7 @@ plot(x, B_sqrt,
 |---|---|----|----|----|----|----|-----|
 | x | 1 | 2  | 3  | 4  | 5  | 6  | 7   |
 
-###P4 Creando los objetos necesarios en R y visualización inicial:
+####P4 Creando los objetos necesarios en R y visualización inicial:
 ```{r}
 C <- c(5,11,21,35,53,75,101)
 x <- c(1,2,3,4,5,6,7)
@@ -159,7 +272,7 @@ plot(x, C_sqrt,
 |---|------|-----|-----|-----|----|----|
 | x | 1    | 2   | 3   | 4   | 5  | 6  |
 
-####Creando los objetos necesarios en R y visualización inicial:
+####P5 Creando los objetos necesarios en R y visualización inicial:
 ```{r}
 D <- c(1024, 512, 256, 128, 64, 32)
 x <- c(1,2,3,4,5,6)
@@ -234,7 +347,7 @@ plot(x, E,
      col = "blueviolet")
 ```
 
-####P5 Exploración de Transformaciones de Datos más Comunes
+####P6 Exploración de Transformaciones de Datos más Comunes
 
 ```{r}
 
@@ -289,7 +402,7 @@ Encuentra la pendiente cuando $F$ es graficada contra $x^2$, después da la fór
 | x | 0.3   | 0.5   | 0.7  | 0.9  |
 
 
-###NO JALA P7 Creando los objetos necesarios en R y visualización inicial: NO JALA
+####NO JALA P7 Creando los objetos necesarios en R y visualización inicial: NO JALA
 ```{r}
 #F <- c(0.283,0.785,1.54,2.54)
 #x_1 <- c(0.3,0.5,0.7,0.9)
@@ -310,12 +423,26 @@ $$y = 4\pi x^2$$
 
 ```{r}
 eq = function(x){x^2*(pi*4)}
-curve(eq,
+test8 <- curve(eq,
       from=-20, to=20,
       lwd = 3,
       main = "Curva de la Ecuación y = 4pi*X^2",
       xlab="X",
       ylab="Y")
+
+
+```
+
+Aplicando una transformación de datos por raíz cuadrada obtenemos la siguiente gráfica:
+
+```{r, fig.width=3, fig.height=3, fig.align='center'}
+plot(test8$x, sqrt(test8$y),
+     type = "l",
+     lwd = 3,
+     main = "Transformación por Raíz^2",
+     xlab = "X",
+     ylab = "Y")
+
 ```
 
 
@@ -324,7 +451,7 @@ curve(eq,
 $$y = 5x^3 - 10$$
 ```{r fig.align='center'}
 eq = function(x){((x^3)*5)-10}
-curve(eq,
+test9 <- curve(eq,
       from=-20, to=20,
       lwd = 3,
       main = "Curva de la Ecuación y = 5x^3-10",
@@ -332,12 +459,22 @@ curve(eq,
       ylab="Y")
 ```
 
+Aplicando una transformación de datos por raíz cúbica obtenemos la siguiente gráfica:
+
+```{r, fig.width=3, fig.height=3, fig.align='center'}
+plot(test9$x, (test9$y)^(1/3),
+     type = "l",
+     lwd = 3,
+     main = "Transformación por Raíz^3",
+     xlab = "X",
+     ylab = "Y")
+```
 
 ###Problema 10
-$$y = \frac{3}{x^1/2}$$
+$$y = \frac{3}{x^{1/2}}$$
 ```{r}
 eq = function(x){3/(x^(1/2))}
-curve(eq,
+test10 <- curve(eq,
       from=0, to=20,
       lwd = 3,
       main = "Curva de la Ecuación y = 3/(x^1/2)",
@@ -346,12 +483,23 @@ curve(eq,
 
 ```
 
+Aplicando una transformación de datos por raíz cúbica obtenemos la siguiente gráfica:
+
+```{r, fig.width=3, fig.height=3, fig.align='center'}
+plot(test10$x, 1/(test10$y)^2,
+     type = "l",
+     lwd = 3,
+     main = "Transformación por 1/x^2",
+     xlab = "X",
+     ylab = "Y")
+```
+
 
 ###Problema 11
 $$y = 5(10^x)$$
 ```{r}
 eq = function(x){10^x * 5}
-curve(eq,
+test11 <- curve(eq,
       from=0, to=10,
       lwd = 3,
       main = "Curva de la Ecuación y = 5(10^x)",
@@ -359,3 +507,11 @@ curve(eq,
       ylab="Y")
 ```
 
+```{r, fig.width=3, fig.height=3, fig.align='center'}
+plot(test11$x, log(test11$y),
+     type = "l",
+     lwd = 3,
+     main = "Transformación por Log",
+     xlab = "X",
+     ylab = "Y")
+```

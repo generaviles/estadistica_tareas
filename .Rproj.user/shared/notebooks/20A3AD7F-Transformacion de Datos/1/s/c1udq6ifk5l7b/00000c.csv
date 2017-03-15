@@ -1,7 +1,0 @@
-"0","eq = function(x){x^2*(pi*4)}"
-"0","curve(eq,"
-"0","      from=-20, to=20,"
-"0","      lwd = 3,"
-"0","      main = ""Curva de la Ecuación y = 4pi*X^2"","
-"0","      xlab=""X"","
-"0","      ylab=""Y"")"

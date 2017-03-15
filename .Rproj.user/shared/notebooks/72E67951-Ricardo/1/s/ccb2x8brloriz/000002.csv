@@ -1,3 +1,0 @@
-"0","library(readr)"
-"0","ric2 <- read_csv(""D:/Dropbox/MsC UABC/2o Semestre/Clases/Estadistica/tareas/datasets/ricardo2.csv"", "
-"0","    col_names = FALSE)"
