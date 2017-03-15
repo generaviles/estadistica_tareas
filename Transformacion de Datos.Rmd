@@ -2,9 +2,7 @@
 title: "Transformación de Datos"
 author: "Gener Aviles-R"
 date: "March 14, 2017"
-output:
-  pdf_document: default
-  html_document: default
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -110,27 +108,28 @@ Basados en las graficaciones podemos ver que las ecuaciones lineales son las de 
 
 Para resolver éste ejercicio se utilizará la aproximación de mínimos cuadrados, sobre la que se basa la regresión lineal. La función `lm()` en R hace éste cálculo a partir de un arreglo de datos que se le entregan, en éste caso los datos de las dos coordenadas del ejercicio.
 
-```{r}
-###PENDIENTE AGREGAR LA TEORIA Y MATEMATICA DE LOS MINIMOS CUADRADOS
+Para realizar éste ejercicio se utilizaremos la **ecuación de la recta** y la **forma punto pendiente**.
 
-x_lm <- c(3,5)
-y_lm <- c(4,7)
+La fórmula de la ecuación de la recta es
+$$y = mx+b$$
+donde:
 
-fit <- lm(x_lm ~ y_lm)
+  - $y$ = el valor en ejes de las Y.
+  - $m$ = la pendiente de la recta.
+  - $x$ = valor en ejes de las x.
+  - $b$ = coeficiente de posición, además de ser el número en que la recta corta el eje de las coordenadas.
+  
+La fórmula para encontrar el punto faltante en una gráfica es como sigue:
+$$y-y_1 = m(x-x_2)$$
+donde:
+$$m = \frac{y_2-y_1}{x_2-x_1}$$
+Substituyendo para encontrar el valor de $m$ y, eventualmente, el de $b$, tenemos:
+$$m = \frac{(7)-(5)}{(4)-(3)} = \frac{2}{1} = 2$$
+Ahora, substituyendo el valor de $m$ en la fórmula de punto pendiente:
+$$y-(5) = 2\{x-(3)\}$$
+$$y = 2x-1 \space  \therefore$$
+$$m = 2 \text{   y   }b = -1 $$
 
-```
-
-Mostrando los atributos del objeto `fit`, que es donde se guardó el modelo, vemos lo siguiente:
-
-```{r}
-fit
-```
-
-Por lo tanto:
-
-  - *$y$ intercept $b$* = 0.3333
-  - *Slope of the line* = 0.6667
-  - *Rise and corresponding run* = **??????????**
 
 <br \>
 
@@ -333,7 +332,7 @@ plot(x, D_log,
 |---|-----|----|----|----|----|
 | x | 1   | 2  | 3  | 4  | 5  |
 
-###P6 Creando los objetos necesarios en R y visualización inicial:
+####P6 Creando los objetos necesarios en R y visualización inicial:
 ```{r}
 E <- c(120,60,40,30,24)
 x <- c(1,2,3,4,5)
